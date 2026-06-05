@@ -7,7 +7,7 @@ from math import comb
 import numpy as np
 
 
-CSV_PATH = "/Users/4c/Desktop/GHQ/data/loto7hh_4626_k44.csv"
+CSV_PATH = "/data/loto7hh_4626_k44.csv"
 N = 39
 K = 7
 RUNS = int(os.getenv("RUNS", "100000"))
@@ -187,16 +187,16 @@ p90: 7621.0
 max: 40552
 
 top 10 preporuka (najcesce ponovljena kombinacija u simulaciji):
-count: 41 lex_1: 1841202 kombinacija: (1, 7, 20, 24, 26, 35, 37)
-count: 40 lex_1: 13556745 kombinacija: (10, 13, 17, 18, 21, 29, 37)
-count: 38 lex_1: 3745367 kombinacija: (2, 6, 7, 9, 10, 25, 35)
-count: 38 lex_1: 12803498 kombinacija: (9, 10, 13, 26, 29, 36, 38)
-count: 38 lex_1: 6917798 kombinacija: (3, 16, 20, 22, 24, 29, 35)
-count: 37 lex_1: 7265142 kombinacija: (4, 5, 15, 21, 22, 23, 32)
-count: 37 lex_1: 3097854 kombinacija: (2, 3, 16, 18, 28, 33, 34)
-count: 37 lex_1: 1515766 kombinacija: (1, 6, 10, 12, 20, 27, 32)
-count: 36 lex_1: 1849335 kombinacija: (1, 7, 23, 26, 31, 33, 39)
-count: 36 lex_1: 7732216 kombinacija: (4, 7, 19, 22, 29, 36, 37)
+count: 41 lex_1: 1841202 kombinacija: (1, x, 20, y, 26, z, 37)
+count: 40 lex_1: 13556745 kombinacija: (10, x, 17, y, 21, z, 37)
+count: 38 lex_1: 3745367 kombinacija: (2, x, 7, y, 10, z, 35)
+count: 38 lex_1: 12803498 kombinacija: (9, x, 13, y, 29, z, 38)
+count: 38 lex_1: 6917798 kombinacija: (3, x, 20, y, 24, z, 35)
+count: 37 lex_1: 7265142 kombinacija: (4, x, 15, y, 22, z, 32)
+count: 37 lex_1: 3097854 kombinacija: (2, x, 16, y, 28, z, 34)
+count: 37 lex_1: 1515766 kombinacija: (1, x, 10, y, 20, z, 32)
+count: 36 lex_1: 1849335 kombinacija: (1, x, 23, y, 31, z, 39)
+count: 36 lex_1: 7732216 kombinacija: (4, x, 19, y, 29, z, 37)
 
 napomena: uniformno -> ocekivano count po kombinaciji ~ 21.6216
 
@@ -236,16 +236,16 @@ p90: 7650.0
 max: 47323
 
 top 10 preporuka (najcesce ponovljena kombinacija u simulaciji):
-count: 273 lex_1: 3999357 kombinacija: (2, 7, 8, 16, 19, 34, 39)
-count: 262 lex_1: 8360653 kombinacija: (4, 13, 14, 15, 16, 35, 38)
-count: 261 lex_1: 8516 kombinacija: (1, 2, 3, 5, 10, 12, 31)
-count: 260 lex_1: 2270267 kombinacija: (1, 10, 20, 21, 22, 32, 34)
-count: 259 lex_1: 10178044 kombinacija: (6, 7, 18, 20, 25, 28, 30)
-count: 259 lex_1: 13705726 kombinacija: (10, 16, 20, 23, 32, 37, 39)
-count: 258 lex_1: 10076263 kombinacija: (6, 7, 10, 17, 25, 38, 39)
-count: 258 lex_1: 12561635 kombinacija: (8, 14, 20, 26, 27, 28, 30)
-count: 257 lex_1: 6885014 kombinacija: (3, 15, 20, 23, 28, 31, 33)
-count: 257 lex_1: 13682811 kombinacija: (10, 15, 25, 26, 33, 34, 36)
+count: 273 lex_1: 3999357 kombinacija: (2, x, 8, y, 19, z, 39)
+count: 262 lex_1: 8360653 kombinacija: (4, x, 14, y, 16, z, 38)
+count: 261 lex_1: 8516 kombinacija: (1, x, 3, y, 10, z, 31)
+count: 260 lex_1: 2270267 kombinacija: (1, x, 20, y, 22, z, 34)
+count: 259 lex_1: 10178044 kombinacija: (6, x, 18, y, 25, z, 30)
+count: 259 lex_1: 13705726 kombinacija: (10, x, 20, y, 32, z, 39)
+count: 258 lex_1: 10076263 kombinacija: (6, x, 10, y, 25, z, 39)
+count: 258 lex_1: 12561635 kombinacija: (8, x, 20, y, 27, z, 30)
+count: 257 lex_1: 6885014 kombinacija: (3, x, 20, y, 28, z, 33)
+count: 257 lex_1: 13682811 kombinacija: (10, x, 25, y, 33, z, 36)
 
 napomena: uniformno -> ocekivano count po kombinaciji ~ 216.2162
 
@@ -294,7 +294,8 @@ Radi brzo (~0.24s za 100k).
 
 Šta je bolje u v3:
 RUNS=100000 podrazumevano
-history_only sada analitički + vektorizovano (Geometric(p) za waiting-time + uniformno za kombinaciju) → 100k za ~0.24s; skalira i na milione trenutno
+history_only sada analitički + vektorizovano (Geometric(p) za waiting-time + uniformno za kombinaciju) → 
+100k za ~0.24s; skalira i na milione trenutno
 timeline vektorizovan preko survival CDF (bez sporog loop-a)
 dodato teorijski prosek koraka (1/p) = 3325.61 da odmah vidim poklapanje sa simulacijom (3340.83)
 Rezultat 100k: prosek koraka do sledeceg duplikata: 3318.7801600000
@@ -320,9 +321,6 @@ dodaje ga u „viđene“, pa šansa za sledeći duplikat raste kroz simuliranu 
 
 
 
-
-100k je već podrazumevano u v3 (RUNS=100000), i to smo maločas pokrenuli (prosek 3340.83, medijana 2296.5).
-
 Za 100k samo pokreneš bez RUNS=:
 
 /Users/4c/qiskit_env/bin/python /Users/4c/Desktop/GHQ/data/vremeplov_duplikat_v3.py
@@ -330,8 +328,8 @@ Komande sa RUNS=1000000 (milion) i MODE=timeline su dodatne opcije, ne zamena za
 
 
 
-2262 ---> 12,632,941                     
-4047 ---> 12,632,941
+2262 ---> 12,632,941 ---> 8,16,19,23,29,31,37                     
+4047 ---> 12,632,941 ---> 8,16,19,23,29,31,37 
 
 račun za očekivane duplikate:
 1. Duplikat je očekivana slučajnost, ne signal. 
@@ -364,7 +362,6 @@ nego pustim algoritam da „izvrti“ budućnost (Monte Carlo)
 i registruje prvi sledeći duplikat — 
 koju kombinaciju ponovi i posle koliko simuliranih izvlačenja.
 
-Mehanika je jednostavna:
 Učitam 4626 istorijskih u set (kao „viđene“).
 Nastavim da izvlačim slučajne 7/39 kombinacije (nastavak istorije).
 Čim padne kombinacija koja je već u setu → to je „sledeći duplikat“. 
